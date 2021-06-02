@@ -11,7 +11,7 @@ try{
             mavenHome = tool name: 'maven 3', type: 'maven'
             mavenCMD = "${mavenHome}/bin/mvn"
             docker = tool name: 'docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-            dockerCMD = "$docker/usr/bin/docker"
+            dockerCMD = "$docker/bin/docker"
         }
         
         stage('git checkout'){
@@ -47,7 +47,7 @@ try{
         
         stage("Push Docker Image to Docker Registry"){
             echo "Pushing image to docker hub"
-            withCredentials([usernamePassword(credentialsId: 'dockerPwd', passwordVariable: 'HubPwd', usernameVariable: 'dockerHubPwd')]) {
+            //withCredentials([usernamePassword(credentialsId: 'dockerPwd', passwordVariable: 'HubPwd', usernameVariable: 'dockerHubPwd')]) {
             sh "${dockerCMD} login -u jaysoni1381 -p jaisoni1381"
             sh "${dockerCMD} push jaysoni1381/springboot:${tagName}"
             }
