@@ -23,7 +23,7 @@
       state: started
       enabled: true
   - name: deploy springboot application
-    command: sudo docker run -it -d -p 8085:8080 --name springboot  jaysoni1381/springboot:1.0
+    command: sudo docker run -it -d -p 8888:8888 --name springboot  jaysoni1381/springboot:1.0
   handlers:
   - name: run update
     apt:
