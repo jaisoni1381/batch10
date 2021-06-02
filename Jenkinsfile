@@ -10,7 +10,7 @@ try{
             echo "Preparing the Jenkins environment with required tools..."
             mavenHome = tool name: 'maven 3', type: 'maven'
             mavenCMD = "${mavenHome}/bin/mvn"
-            docker = tool name: 'docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
+            docker = tool name: 'docker2', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
             dockerCMD = "$docker/bin/docker"
         }
         
@@ -48,7 +48,7 @@ try{
         stage("Push Docker Image to Docker Registry"){
             echo "Pushing image to docker hub"
             //withCredentials([usernamePassword(credentialsId: 'dockerPwd', passwordVariable: 'HubPwd', usernameVariable: 'dockerHubPwd')]) {
-            sh "/usr/bin/docker login -u jaysoni1381 -p jaisoni1381"
+            sh "${dockerCMD} login -u jaysoni1381 -p jaisoni1381"
             sh "${dockerCMD} push jaysoni1381/springboot:${tagName}"
             }
         }
