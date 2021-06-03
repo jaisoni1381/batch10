@@ -33,6 +33,7 @@ try{
         stage('Integration test'){
             echo "Executing Regression Test Suits..."
             // command to execute selenium test suits
+            // test
         }
         
         stage('publish report'){
