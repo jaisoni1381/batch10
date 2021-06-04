@@ -38,7 +38,7 @@ try{
         
         stage('publish report'){
             echo " Publishing HTML report.."
-            publishHTML target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'My Report']
+            publishHTML target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'HTML_20Report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'My Report']
         }
         
         stage('Build Docker Image'){
