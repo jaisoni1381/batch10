@@ -32,14 +32,14 @@ try{
         
         stage('Integration test'){
             echo "Executing Regression Test Suits..."
-            // command to execute selenium test suits
-            // test
+            echo "Generating Test Report"
+            sh "${mavenCMD} surefire-report:report-only"
         }
         
         stage('publish report'){
             echo " Publishing HTML report.."
-            publishHTML target:( [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/classes/static/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'My Report'])
-            junit checksName: 'testcheck', testDataPublishers: [[$class: 'AttachmentPublisher']], testResults: '/target/surefire-reports/'
+            publishHTML target:( [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
+            }', reportName: 'HTML Report', reportTitles: 'My Report'])
         }
         
         stage('Build Docker Image'){
