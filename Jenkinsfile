@@ -39,6 +39,7 @@ try{
         stage('publish report'){
             echo " Publishing HTML report.."
             publishHTML target:( [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/classes/static/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'My Report'])
+            junit checksName: 'testcheck', testDataPublishers: [[$class: 'AttachmentPublisher']], testResults: '/target/surefire-reports/TEST-com.TestMessageController.xml'
         }
         
         stage('Build Docker Image'){
