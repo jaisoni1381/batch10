@@ -73,7 +73,7 @@ catch(Exception err){
    mail to: 'jaisoni1381@gmail.com', subject: "Build Failed JOB- ${JOB_NAME} ${BUILD_NUMBER} ", body: "please go to job for more details"
 }
 finally {
-    (currentBuild.result!= "ABORTED") || (currentBuild.result!= "FAILURE") && node("master") {
+    (currentBuild.result!= "ABORTED") || (currentBuild.result!= "FAILURE") || (currentBuild.result= "SUCCESS") && node("master") {
         echo "finally gets executed and end an email notification for every build"
         mail to: 'jaisoni1381@gmail.com', subject: "Build is  Completed Successfully- JOB ${JOB_NAME} ${BUILD_NUMBER}", body: "please go to job for more details"
     }
