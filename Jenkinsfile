@@ -75,6 +75,5 @@ catch(Exception err){
 finally {
         echo "Build successfully completed"
         mail to: 'jaisoni1381@gmail.com', subject: "Build is  Completed Successfully- JOB ${JOB_NAME} ${BUILD_NUMBER}", body: "please go to job for more details"
-    }
     
 }
