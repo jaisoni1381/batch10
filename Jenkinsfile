@@ -70,7 +70,7 @@ try{
 catch(Exception err){
      echo "Exception occured..."
      currentBuild.result="FAILURE"
-     emailext body: 'Your build has been unsuccessful.Please visit ${BUILD_URL} for detailed status', subject: '$PROJECT_NAME - Build Status # $BUILD_NUMBER - $BUILD_STATUS!', to: 'jaisoni1381@gmail.com'
+     emailext body: 'Your build has been unsuccessful.Please visit ${BUILD_URL} for detailed status.', subject: '$PROJECT_NAME - Build Status # $BUILD_NUMBER - $BUILD_STATUS!', to: 'jaisoni1381@gmail.com'
 }
 finally {
      (currentBuild.result!= "ABORTED") && node("master") {
