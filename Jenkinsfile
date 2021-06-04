@@ -68,12 +68,13 @@ try{
     }
 }
 catch(Exception err){
-    echo "Exception occured..."
-    currentBuild.result="FAILURE"
-   mail to: 'jaisoni1381@gmail.com', subject: "Build Failed JOB- ${JOB_NAME} ${BUILD_NUMBER} ", body: "please go to job for more details"
+     echo "Exception occured..."
+     currentBuild.result="FAILURE"
+     emailext body: 'Your build has been unsuccessful', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'jaisoni1381@gmail.com'
 }
 finally {
-        echo "Build successfully completed"
-        mail to: 'jaisoni1381@gmail.com', subject: "Build is  Completed Successfully- JOB ${JOB_NAME} ${BUILD_NUMBER}", body: "please go to job for more details"
-    
+     (currentBuild.result!= "ABORTED") && node("master") {
+      echo "finally gets executed and end an email notification for every build"
+      emailext body: 'Your build has been successful', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'jaisoni1381@gmail.com'
+          }
 }
