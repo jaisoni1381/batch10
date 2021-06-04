@@ -38,8 +38,7 @@ try{
         
         stage('publish report'){
             echo " Publishing HTML report.."
-            publishHTML target:( [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
-            }', reportName: 'HTML Report', reportTitles: 'My Report'])
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
         }
         
         stage('Build Docker Image'){
